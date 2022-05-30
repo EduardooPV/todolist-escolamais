@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import { ListUsers } from "@components/ListUsers";
 
 export default function Home() {
   return (
@@ -11,6 +12,8 @@ export default function Home() {
       </Head>
 
       <h1>Todolist</h1>
+
+      <ListUsers />
     </div>
   );
 }
