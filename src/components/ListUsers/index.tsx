@@ -4,12 +4,7 @@ import { api } from "../../services/api";
 
 import { Container, Content, CardUser } from "./styles";
 
-interface UserProps {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-}
+import { UserProps } from "../../types";
 
 export function ListUsers() {
   const [users, setUsers] = useState<UserProps[]>([]);
