@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { ListUsers } from "@components/ListUsers";
+import { ListUsers } from "../components/ListUsers";
 
 export default function Home() {
   return (

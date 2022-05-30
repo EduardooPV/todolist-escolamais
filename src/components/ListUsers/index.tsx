@@ -15,11 +15,12 @@ export function ListUsers() {
   const [users, setUsers] = useState<UserProps[]>([]);
 
   useEffect(() => {
-    try {
-      api.get("/users").then((response) => setUsers(response.data));
-    } catch (error: any) {
-      console.log(`Erro: ${error.message}`);
-    }
+    api
+      .get("/users")
+      .then((response) => setUsers(response.data))
+      .catch((error: any) =>
+        console.log(`Não foram encontrados os usuários. Erro: ${error.message}`)
+      );
   }, []);
 
   return (
