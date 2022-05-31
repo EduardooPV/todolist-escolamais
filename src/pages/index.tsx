@@ -8,12 +8,12 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>To-do | Home</title>
+        <title>Home | To-do</title>
         <meta name="description" content="Todolist EscolaMais" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header title="to-do - Escola Mais"/>
+      <Header title="to-do - Escola Mais" />
 
       <ListUsers />
     </>

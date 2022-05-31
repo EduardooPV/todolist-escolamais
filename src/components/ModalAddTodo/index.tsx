@@ -1,30 +1,11 @@
-import React, { ChangeEvent, useState, SetStateAction } from "react";
-import Modal from "react-modal";
+import React, { ChangeEvent, useState } from "react";
 import { api } from "src/services/api";
+import Modal from "react-modal";
 import { ToastContainer, toast } from "react-toastify";
+
+import { customStyles, Container } from "./styles";
+import { ModalProps } from "./types";
 import "react-toastify/dist/ReactToastify.css";
-import { Container } from "./styles";
-
-import { ModalProps } from "../../types";
-
-const customStyles = {
-  overlay: {
-    backgroundColor: "rgba(0,0,0,0.8)",
-    backdropFilter: "blur(2px)",
-  },
-  content: {
-    background: " #111111",
-    border: "1px solid #ff4c6a",
-    height: "70%",
-    width: "70%",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
 
 export function ModalAddTodo({
   isOpen,
@@ -32,12 +13,12 @@ export function ModalAddTodo({
   todos,
   setTodos,
 }: ModalProps) {
-  const [titleContent, setTitleContent] = useState(() => "");
+  const [nameTodoItem, setNameTodoItem] = useState(() => "");
 
   const updateTodos = [...todos];
 
-  function addNewTodo() {
-    if (titleContent === "") {
+  function createNewTodoItem() {
+    if (nameTodoItem === "") {
       return toast.error("Por favor adicione um nome para sua nova tarefa!");
     }
 
@@ -46,7 +27,7 @@ export function ModalAddTodo({
         method: "POST",
         body: {
           id: updateTodos[updateTodos.length - 1].id + 1,
-          title: titleContent,
+          title: nameTodoItem,
           completed: false,
           userId: updateTodos[0].userId,
         },
@@ -67,26 +48,30 @@ export function ModalAddTodo({
     setTodos(updateTodos);
   }
 
-  function handleTaskName(event: ChangeEvent<HTMLInputElement>) {
-    setTitleContent(event.currentTarget.value);
+  function handleTodoName(event: ChangeEvent<HTMLInputElement>) {
+    setNameTodoItem(event.currentTarget.value);
   }
 
   return (
     <Modal isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles}>
       <Container>
-        <p>Adicionar uma nova tarefa</p>
+        <button onClick={onRequestClose}>
+          <img src="/x.svg" alt="" />
+        </button>
+
+        <p>Criar nova tarefa</p>
 
         <div>
           <label htmlFor="tarefa">Tarefa:</label>
           <input
             placeholder="Ex: Estudar"
             type="text"
-            onChange={(event) => handleTaskName(event)}
+            onChange={(event) => handleTodoName(event)}
           />
 
           <div>
             <button onClick={onRequestClose}>Cancelar</button>
-            <button onClick={addNewTodo}>Criar tarefa</button>
+            <button onClick={createNewTodoItem}>Criar tarefa</button>
           </div>
         </div>
         <ToastContainer />

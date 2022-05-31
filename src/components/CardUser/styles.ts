@@ -1,18 +1,24 @@
 import styled from "styled-components";
 
 export const Container = styled.a`
-  width: 250px;
-  margin: 20px 0;
+  /* width: 250px; */
   padding: 10px;
 
   border: 2px solid #ff4c6a;
   border-radius: 0.25rem;
   text-decoration: none;
 
-  transition: all 0.2s;
+  transition: transform 0.2s;
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  &:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    outline-color: #fff;
+    outline-width: 2px;
   }
 
   h3 {

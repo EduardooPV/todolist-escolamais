@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
 import { Container, Content } from "./styles";
-import { UserProps } from "../../types";
+import { UserProps } from "./types";
 import { CardUser } from "@components/CardUser";
 
 export function ListUsers() {
@@ -20,6 +20,7 @@ export function ListUsers() {
   return (
     <Container>
       <h2>Usuários:</h2>
+
       <Content>
         {users.map((user) => (
           <CardUser key={user.username} props={user} />

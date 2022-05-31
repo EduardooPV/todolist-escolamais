@@ -22,10 +22,17 @@ export const Container = styled.main`
     color: #fff;
     border: 1px solid #ff4c6a;
     border-radius: 0.5rem;
-    transition: all 0.2s;
+    transition: background 0.2s;
 
     &:hover {
       background: rgba(255, 106, 106, 0.2);
+    }
+
+    &:focus {
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+      outline-color: #fff;
+      outline-width: 2px;
     }
   }
 `;
@@ -72,6 +79,7 @@ export const ListItem = styled.div<TodoProps>`
     cursor: pointer;
     margin-right: 1.2rem;
   }
+
   input[type="checkbox"]:before {
     content: "";
     width: 20px;
@@ -86,6 +94,7 @@ export const ListItem = styled.div<TodoProps>`
     border-radius: 4px;
     background-color: #e9e9e9;
   }
+
   input[type="checkbox"]:checked:before {
     content: "";
     width: 20px;
@@ -99,6 +108,7 @@ export const ListItem = styled.div<TodoProps>`
 
     background-color: #ff4c6a;
   }
+
   input[type="checkbox"]:checked:after {
     content: url("/check.png");
     display: block;
@@ -118,10 +128,29 @@ export const ListItem = styled.div<TodoProps>`
     align-items: center;
 
     p {
+      max-width: fit-content;
       width: 90%;
+      position: relative;
       color: ${(props) => (props.statusChecked ? "#888" : "#fff")};
-      text-decoration: ${(props) =>
-        props.statusChecked ? "line-through" : "none"};
+      transition: all 0.1s;
+      font-size: 1.08rem;
+
+      font-family: "Papernotes", sans-serif;
+      letter-spacing: 1.5px;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+
+        height: 2px;
+        width: ${(props) => (props.statusChecked ? "100%" : "0px")};
+        border-radius: 50%;
+
+        background: #888;
+        transition: all 0.3s;
+      }
     }
 
     span {

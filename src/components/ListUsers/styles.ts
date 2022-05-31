@@ -9,11 +9,20 @@ export const Container = styled.section`
 
   h2 {
     color: #ccc;
+    margin-bottom: 30px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 60px;
+    }
   }
 `;
 
 export const Content = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+
+  @media (min-width: 768px) {
+    gap: 40px;
+  }
 `;

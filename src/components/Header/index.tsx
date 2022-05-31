@@ -1,10 +1,10 @@
 import React from "react";
-import { HeaderProps } from "src/types";
-import { Container } from "./styles";
-
-import { IoMdReturnLeft } from "react-icons/io";
 import { useRouter } from "next/router";
 import Link from "next/link";
+
+import { HeaderProps } from "./types";
+import { Container } from "./styles";
+import { IoMdReturnLeft } from "react-icons/io";
 
 export function Header({ title }: HeaderProps) {
   const { asPath } = useRouter();

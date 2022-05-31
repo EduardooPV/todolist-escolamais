@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -28,6 +28,7 @@ h1, h2, h3, h4, h5, h6, strong {
 
 body {
   background: #111111;
+  font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -40,4 +41,12 @@ button {
   cursor: not-allowed;
 }
 
-`
+@font-face {
+  font-family: "Papernotes";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/fonts/Papernotes.ttf");
+}
+
+`;

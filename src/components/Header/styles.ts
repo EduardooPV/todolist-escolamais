@@ -29,10 +29,17 @@ export const Container = styled.header`
     color: #fff;
     font-size: 1.2rem;
 
-    transition: all 0.2s;
+    transition: border 0.2s;
 
     &:hover {
       border: 2px solid #ff4c6a;
+    }
+
+    &:focus {
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+      outline-color: #ff4c6a;
+      outline-width: 2px;
     }
   }
 `;

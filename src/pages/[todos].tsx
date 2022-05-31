@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { api } from "src/services/api";
-
 import { MdAdd } from "react-icons/md";
 import { ModalAddTodo } from "@components/ModalAddTodo";
 
@@ -9,7 +9,7 @@ import { TodosProps } from "src/types";
 import { Container, Content, ListItem } from "./style";
 import { Header } from "@components/Header";
 
-export default function User() {
+export default function UserTodos() {
   const [isNewTodoModalOpen, setIsNewTodoModalOpen] = useState(false);
   const [check, setCheck] = useState(false);
   const [todos, setTodos] = useState<TodosProps[]>([]);
@@ -23,11 +23,11 @@ export default function User() {
     }
   }, []);
 
-  function handleOpenNewTodo() {
+  function handleOpenModalNewTodo() {
     setIsNewTodoModalOpen(true);
   }
 
-  function handleCloseNewTodo() {
+  function handleCloseModalNewTodo() {
     setIsNewTodoModalOpen(false);
   }
 
@@ -60,6 +60,7 @@ export default function User() {
           // Aqui viria alguma lógica para adicionar ao State as alterações
           // Mas como está estático, vou deixar vazio
           // setTodos(response.data.body);
+          console.log(response.data.body)
         })
         .catch((error: any) => console.log(`Erro: ${error.message}`));
     }
@@ -69,8 +70,11 @@ export default function User() {
 
   return (
     <Container>
+      <Head>
+        <title>Suas tarefas | To-do</title>
+      </Head>
       <Header title="Suas Tarefas" />
-      <button onClick={handleOpenNewTodo}>
+      <button onClick={handleOpenModalNewTodo}>
         <MdAdd color="#ff4c6a" fontSize="1.2rem" />
         Nova tarefa
       </button>
@@ -94,7 +98,7 @@ export default function User() {
 
       <ModalAddTodo
         isOpen={isNewTodoModalOpen}
-        onRequestClose={handleCloseNewTodo}
+        onRequestClose={handleCloseModalNewTodo}
         todos={todos}
         setTodos={setTodos}
       />
