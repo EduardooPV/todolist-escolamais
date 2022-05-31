@@ -3,15 +3,28 @@ import Modal from "react-modal";
 import { api } from "src/services/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Container } from "./styles";
 
-import { TodosProps } from "../../types";
+import { ModalProps } from "../../types";
 
-interface ModalProps {
-  isOpen: boolean;
-  onRequestClose: () => void;
-  todos: TodosProps[];
-  setTodos: React.Dispatch<SetStateAction<TodosProps[]>>;
-}
+const customStyles = {
+  overlay: {
+    backgroundColor: "rgba(0,0,0,0.8)",
+    backdropFilter: "blur(2px)",
+  },
+  content: {
+    background: " #111111",
+    border: "1px solid #ff4c6a",
+    height: "70%",
+    width: "70%",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
 
 export function ModalAddTodo({
   isOpen,
@@ -59,16 +72,25 @@ export function ModalAddTodo({
   }
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
-      <p>Adicionar uma nova tarefa</p>
+    <Modal isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles}>
+      <Container>
+        <p>Adicionar uma nova tarefa</p>
 
-      <label htmlFor="tarefa">Tarefa:</label>
-      <input type="text" onChange={(event) => handleTaskName(event)} />
+        <div>
+          <label htmlFor="tarefa">Tarefa:</label>
+          <input
+            placeholder="Ex: Estudar"
+            type="text"
+            onChange={(event) => handleTaskName(event)}
+          />
 
-      <button onClick={addNewTodo}>Criar tarefa</button>
-      <button onClick={onRequestClose}>Cancelar</button>
-
-      <ToastContainer />
+          <div>
+            <button onClick={onRequestClose}>Cancelar</button>
+            <button onClick={addNewTodo}>Criar tarefa</button>
+          </div>
+        </div>
+        <ToastContainer />
+      </Container>
     </Modal>
   );
 }

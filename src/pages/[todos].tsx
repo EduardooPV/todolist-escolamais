@@ -6,6 +6,8 @@ import { MdAdd } from "react-icons/md";
 import { ModalAddTodo } from "@components/ModalAddTodo";
 
 import { TodosProps } from "src/types";
+import { Container, Content, ListItem } from "./style";
+import { Header } from "@components/Header";
 
 export default function User() {
   const [isNewTodoModalOpen, setIsNewTodoModalOpen] = useState(false);
@@ -66,31 +68,29 @@ export default function User() {
   }
 
   return (
-    <>
-      <h1>Teste</h1>
-      <button>
-        <MdAdd onClick={handleOpenNewTodo} />
+    <Container>
+      <Header title="Suas Tarefas" />
+      <button onClick={handleOpenNewTodo}>
+        <MdAdd color="#ff4c6a" fontSize="1.2rem" />
+        Nova tarefa
       </button>
-      {Object.values(todos).map((todo) => (
-        <div key={todo.id} style={{ margin: "20px 0" }}>
-          <span>Número: {todo.id}</span>
-          <p
-            style={
-              todo.completed
-                ? { textDecoration: "line-through" }
-                : { textDecoration: "none" }
-            }
-          >
-            Título: {todo.title}
-          </p>
+      <Content>
+        {Object.values(todos).map((todo) => (
+          <ListItem key={todo.id} statusChecked={todo.completed}>
+            <input
+              type="checkbox"
+              onChange={() => handleChangeCheck(todo.id)}
+              defaultChecked={todo.completed}
+            />
 
-          <input
-            type="checkbox"
-            onChange={() => handleChangeCheck(todo.id)}
-            defaultChecked={todo.completed}
-          />
-        </div>
-      ))}
+            <div>
+              <p>{todo.title}</p>
+
+              <span>{todo.id}</span>
+            </div>
+          </ListItem>
+        ))}
+      </Content>
 
       <ModalAddTodo
         isOpen={isNewTodoModalOpen}
@@ -98,6 +98,6 @@ export default function User() {
         todos={todos}
         setTodos={setTodos}
       />
-    </>
+    </Container>
   );
 }

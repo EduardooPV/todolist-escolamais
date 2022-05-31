@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6, strong {
 }
 
 body {
-  background: #F0F2F5;
+  background: #111111;
   -webkit-font-smoothing: antialiased;
 }
 
