@@ -6,7 +6,7 @@ import { MdAdd } from "react-icons/md";
 import { ModalAddTodo } from "../components/ModalAddTodo";
 
 import { TodosProps } from "src/types";
-import { Container, Content, ListItem } from "./style";
+import { Container, Content, ListItem } from "../styles/style";
 import { Header } from "../components/Header";
 
 export default function UserTodos() {
