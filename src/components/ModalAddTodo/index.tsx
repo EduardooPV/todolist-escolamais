@@ -53,29 +53,35 @@ export function ModalAddTodo({
   }
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles}>
-      <Container>
-        <button onClick={onRequestClose}>
-          <img src="/x.svg" alt="" />
-        </button>
+    <>
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={onRequestClose}
+        style={customStyles}
+      >
+        <Container>
+          <button onClick={onRequestClose}>
+            <img src="/x.svg" alt="" />
+          </button>
 
-        <p>Criar nova tarefa</p>
-
-        <div>
-          <label htmlFor="tarefa">Tarefa:</label>
-          <input
-            placeholder="Ex: Estudar"
-            type="text"
-            onChange={(event) => handleTodoName(event)}
-          />
+          <p>Criar nova tarefa</p>
 
           <div>
-            <button onClick={onRequestClose}>Cancelar</button>
-            <button onClick={createNewTodoItem}>Criar tarefa</button>
+            <label htmlFor="tarefa">Tarefa:</label>
+            <input
+              placeholder="Ex: Estudar"
+              type="text"
+              onChange={(event) => handleTodoName(event)}
+            />
+
+            <div>
+              <button onClick={onRequestClose}>Cancelar</button>
+              <button onClick={createNewTodoItem}>Criar tarefa</button>
+            </div>
           </div>
-        </div>
-        <ToastContainer />
-      </Container>
-    </Modal>
+        </Container>
+      </Modal>
+      <ToastContainer />
+    </>
   );
 }

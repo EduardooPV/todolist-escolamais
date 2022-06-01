@@ -135,8 +135,7 @@ export const ListItem = styled.div<TodoProps>`
       transition: all 0.1s;
       font-size: 1.08rem;
 
-      font-family: "Papernotes", sans-serif;
-      letter-spacing: 1.5px;
+      font-family: "Lato", sans-serif;
 
       &::after {
         content: "";

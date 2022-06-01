@@ -3,11 +3,11 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { api } from "src/services/api";
 import { MdAdd } from "react-icons/md";
-import { ModalAddTodo } from "@components/ModalAddTodo";
+import { ModalAddTodo } from "../components/ModalAddTodo";
 
 import { TodosProps } from "src/types";
 import { Container, Content, ListItem } from "./style";
-import { Header } from "@components/Header";
+import { Header } from "../components/Header";
 
 export default function UserTodos() {
   const [isNewTodoModalOpen, setIsNewTodoModalOpen] = useState(false);

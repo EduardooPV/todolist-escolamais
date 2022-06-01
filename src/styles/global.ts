@@ -49,4 +49,17 @@ button {
   src: url("/fonts/Papernotes.ttf");
 }
 
+::-webkit-scrollbar-track {
+  background: rgba(50, 50, 50, 0.8);  
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff4c6a; 
+  border-radius: 10px;
+}
+
 `;
