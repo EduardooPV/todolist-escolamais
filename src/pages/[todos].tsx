@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { api } from "src/services/api";
+import { api } from "../services/api";
 import { MdAdd } from "react-icons/md";
 import { ModalAddTodo } from "../components/ModalAddTodo";
 
